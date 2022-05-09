@@ -1,0 +1,46 @@
+@startuml
+' defineClass
+class ProgramFile{
+    + filename: String
+    + version: String
+}
+
+abstract class ProgramUnit{
+    + name: String
+    + srcSpan: String
+    + comment: String
+}
+
+
+abstract class ExternalProcedure{
+}
+
+abstract class SubProgram{
+}
+
+class Program{
+}
+
+class Function{
+}
+
+class Subroutine{
+}
+
+class BlockData{
+}
+
+' defineHierarchy
+ProgramFile "1" *-- "1..*" ProgramUnit
+
+ProgramUnit <|-- Program
+ProgramUnit <|-- SubProgram
+ProgramUnit <|-- ExternalProcedure
+ExternalProcedure <|-- Function
+ExternalProcedure <|-- Subroutine
+SubProgram <|-- BlockData
+
+' defineComment
+note right of ProgramFile: A complete program (ProgramFile) consists of one or more program units.\nThere is exactly one main program which begins with a PROGRAM statement\n\nPROGRAM main-name\n\nThis statement appears only at the beginning of the main program and the symbolic\nname main-name must be unique (not used elsewhere in any of the program units).\n\nThere may also be any number of external procedures (functions and subroutines) and BLOCK DATA subprograms.\nEvery program unit must end with an END statement.\n\nEND
+
+@enduml
