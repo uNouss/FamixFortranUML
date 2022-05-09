@@ -41,6 +41,6 @@ ExternalProcedure <|-- Subroutine
 SubProgram <|-- BlockData
 
 ' defineComment
-note right of ProgramFile: A complete program (ProgramFile) consists of one or more program units.\nThere is exactly one main program which begins with a PROGRAM statement\n\nPROGRAM main-name\n\nThis statement appears only at the beginning of the main program and the symbolic\nname main-name must be unique (not used elsewhere in any of the program units).\n\nThere may also be any number of external procedures (functions and subroutines) and BLOCK DATA subprograms.\nEvery program unit must end with an END statement.\n\nEND
+note right of ProgramFile: A complete <b>program</b> (ProgramFile) consists of <u>one or more program units</u>.\nThere is exactly <u>one main program</u> which begins with a <b>PROGRAM</b> statement\n\n<b>PROGRAM main-name</b>\n\nThis statement appears only at the beginning of the main program and the symbolic\nname main-name must be unique (not used elsewhere in any of the program units).\n\nThere may also be any number of external procedures (<b>functions</b> and <b>subroutines</b>) and <b>BLOCK DATA</b> subprograms.\nEvery program unit must end with an END statement.\n\n<b>END</b>
 
 @enduml
