@@ -1,0 +1,191 @@
+@startuml
+hide empty members
+
+skinparam class {
+  BackgroundColor white
+  ArrowColor black
+  BorderColor darkGray
+  BackgroundColor<<External>> LightYellow
+  BorderColor<<External>> LightGray
+}
+
+class Attribute << (C,white) >> #FFFFFF {
+}
+class Folder << (C,white) >> #FFFFFF {
+}
+class AnnotationTypeAttribute << (C,white) >> #FFFFFF {
+}
+class Enum << (C,white) >> #FFFFFF {
+}
+class Package << (C,white) >> #FFFFFF {
+  Number relativeImportanceForSystem
+  Number distance
+  Number abstractness
+  Number numberOfMethods
+  Number efferentCoupling
+  Number martinCohesion
+  Number instability
+  Number bunchCohesion
+  Number afferentCoupling
+  Number numberOfClientPackages
+}
+class Method << (C,white) >> #FFFFFF {
+  Boolean isImplementing
+  Boolean isClassInitializer
+  Number numberOfInvokedMethods
+  Boolean isOverriding
+  Boolean isJUnit4Test
+  Number numberOfAccesses
+  Boolean isOverriden
+  Number numberOfConditionals
+  Number numberOfComments
+}
+class File << (C,white) >> #FFFFFF {
+}
+class ImplicitVariable << (C,white) >> #FFFFFF {
+}
+class TCanBeTransient << (T,lightGrey) >> #FFFFFF {
+  Boolean isTransient
+}
+class UnknownSourceLanguage << (C,white) >> #FFFFFF {
+  String name
+}
+class SourcedEntity << (C,white) >> #FFFFFF {
+  Number numberOfJavaNullChecks
+}
+class Inheritance << (C,white) >> #FFFFFF {
+}
+class EnumValue << (C,white) >> #FFFFFF {
+}
+class Exception << (C,white) >> #FFFFFF {
+}
+class TCanBeVolatile << (T,lightGrey) >> #FFFFFF {
+  Boolean isVolatile
+}
+class TCanBeSynchronized << (T,lightGrey) >> #FFFFFF {
+  Boolean isSynchronized
+}
+class Entity << (C,white) >> #FFFFFF {
+}
+class SourceTextAnchor << (C,white) >> #FFFFFF {
+}
+class ParameterizedType << (C,white) >> #FFFFFF {
+}
+class TClassMetrics << (T,lightGrey) >> #FFFFFF {
+  Number numberOfPrivateMethods
+  Number numberOfPublicMethods
+  Number numberOfAccessorMethods
+  Number numberOfProtectedMethods
+  Number numberOfConstructorMethods
+}
+class UnknownVariable << (C,white) >> #FFFFFF {
+}
+class ContainerEntity << (C,white) >> #FFFFFF {
+}
+class ThrownException << (C,white) >> #FFFFFF {
+}
+class AnnotationInstance << (C,white) >> #FFFFFF {
+}
+class PrimitiveType << (C,white) >> #FFFFFF {
+}
+class Type << (C,white) >> #FFFFFF {
+  Boolean isTestCase
+  Boolean isInnerClass
+  Boolean isJUnit4TestCase
+}
+class GlobalVariable << (C,white) >> #FFFFFF {
+}
+class Reference << (C,white) >> #FFFFFF {
+}
+class CaughtException << (C,white) >> #FFFFFF {
+}
+class SourceLanguage << (C,white) >> #FFFFFF {
+  String name
+}
+class Comment << (C,white) >> #FFFFFF {
+}
+class Invocation << (C,white) >> #FFFFFF {
+}
+class SourceAnchor << (C,white) >> #FFFFFF {
+}
+class Class << (C,white) >> #FFFFFF {
+  Boolean isIgnored
+  Boolean isInterface
+}
+class DeclaredException << (C,white) >> #FFFFFF {
+}
+class Access << (C,white) >> #FFFFFF {
+}
+class LocalVariable << (C,white) >> #FFFFFF {
+}
+class AnnotationType << (C,white) >> #FFFFFF {
+}
+class AnnotationInstanceAttribute << (C,white) >> #FFFFFF {
+}
+class ParameterizableClass << (C,white) >> #FFFFFF {
+}
+class Parameter << (C,white) >> #FFFFFF {
+}
+class FamixJavaModel << (C,white) >> #FFFFFF {
+}
+class NamedEntity << (C,white) >> #FFFFFF {
+}
+class ParameterType << (C,white) >> #FFFFFF {
+}
+class IndexedFileAnchor << (C,white) >> #FFFFFF {
+}
+
+NamedEntity <|-- Attribute
+TCanBeTransient <|.. Attribute
+TCanBeVolatile <|.. Attribute
+NamedEntity <|-- Folder
+NamedEntity <|-- AnnotationTypeAttribute
+Type <|-- Enum
+ContainerEntity <|-- Package
+ContainerEntity <|-- Method
+TCanBeSynchronized <|.. Method
+NamedEntity <|-- File
+NamedEntity <|-- ImplicitVariable
+SourceLanguage <|-- UnknownSourceLanguage
+Entity <|-- SourcedEntity
+Entity <|-- Inheritance
+NamedEntity <|-- EnumValue
+Entity <|-- Exception
+SourceAnchor <|-- SourceTextAnchor
+Type <|-- ParameterizedType
+NamedEntity <|-- UnknownVariable
+NamedEntity <|-- ContainerEntity
+Exception <|-- ThrownException
+SourcedEntity <|-- AnnotationInstance
+Type <|-- PrimitiveType
+ContainerEntity <|-- Type
+NamedEntity <|-- GlobalVariable
+Entity <|-- Reference
+Exception <|-- CaughtException
+Entity <|-- SourceLanguage
+SourcedEntity <|-- Comment
+Entity <|-- Invocation
+Entity <|-- SourceAnchor
+Type <|-- Class
+TClassMetrics <|.. Class
+Exception <|-- DeclaredException
+Entity <|-- Access
+NamedEntity <|-- LocalVariable
+Type <|-- AnnotationType
+SourcedEntity <|-- AnnotationInstanceAttribute
+Class <|-- ParameterizableClass
+NamedEntity <|-- Parameter
+SourcedEntity <|-- NamedEntity
+Type <|-- ParameterType
+SourceAnchor <|-- IndexedFileAnchor
+
+AnnotationTypeAttribute -- "parentAnnotationType" AnnotationType
+Method -- " *invokedMethods" Method
+Method -- " *clientBehaviours" Method
+Method -- " *providerBehaviours" Method
+Method -- " *invokingMethods" Method
+ParameterizableClass -- " *parameters" ParameterType
+
+
+
+@enduml
