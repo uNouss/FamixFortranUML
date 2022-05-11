@@ -1,0 +1,55 @@
+@startuml
+hide empty members
+
+skinparam class {
+  BackgroundColor white
+  ArrowColor black
+  BorderColor darkGray
+  BackgroundColor<<External>> LightYellow
+  BorderColor<<External>> LightGray
+}
+
+class PUComment << (C,white) >> #FFFFFF {
+}
+class FamixFortranModel << (C,white) >> #FFFFFF {
+}
+class PUFunction << (C,white) >> #FFFFFF {
+}
+class TWithProgramUnits << (T,lightGrey) >> #FFFFFF {
+}
+class Subroutine << (C,white) >> #FFFFFF {
+}
+class TProgramUnit << (T,lightGrey) >> #FFFFFF {
+}
+class Parameter << (C,white) >> #FFFFFF {
+}
+class PUBlockData << (C,white) >> #FFFFFF {
+}
+class PUModule << (C,white) >> #FFFFFF {
+}
+class Variable << (C,white) >> #FFFFFF {
+}
+class Entity << (C,white) >> #FFFFFF {
+}
+class ExternalProcedure << (C,white) >> #FFFFFF {
+}
+class PUMain << (C,white) >> #FFFFFF {
+}
+
+Entity <|-- PUComment
+ExternalProcedure <|-- PUFunction
+ExternalProcedure <|-- Subroutine
+Entity <|-- Parameter
+Entity <|-- PUBlockData
+TProgramUnit <|.. PUBlockData
+Entity <|-- PUModule
+Entity <|-- Variable
+Entity <|-- ExternalProcedure
+TProgramUnit <|.. ExternalProcedure
+Entity <|-- PUMain
+
+TProgramUnit " *programUnits" --o "container" TWithProgramUnits
+
+
+
+@enduml
