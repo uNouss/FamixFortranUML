@@ -1,6 +1,5 @@
 @startuml
 hide empty members
-
 skinparam class {
   BackgroundColor white
   ArrowColor black
@@ -9,44 +8,82 @@ skinparam class {
   BorderColor<<External>> LightGray
 }
 
-class PUComment << (C,white) >> #FFFFFF {
-}
-class FamixFortranModel << (C,white) >> #FFFFFF {
-}
-class PUFunction << (C,white) >> #FFFFFF {
+class Program << (C,white) >> #FFFFFF {
 }
 class TWithProgramUnits << (T,lightGrey) >> #FFFFFF {
 }
+class UnknownSourceLanguage << (C,white) >> #FFFFFF {
+}
+class Function << (C,white) >> #FFFFFF {
+  Boolean isIntrinsic
+}
+class Invocation << (C,white) >> #FFFFFF {
+}
 class Subroutine << (C,white) >> #FFFFFF {
+}
+class ProgramFile << (C,white) >> #FFFFFF {
+  String filename
+  String version
+}
+class NamedEntity << (C,white) >> #FFFFFF {
+}
+class Module << (C,white) >> #FFFFFF {
+}
+class Variable << (C,white) >> #FFFFFF {
+}
+class BlockData << (C,white) >> #FFFFFF {
+}
+class UnresolvedBehavioral << (C,white) >> #FFFFFF {
+}
+class IndexedFileAnchor << (C,white) >> #FFFFFF {
+}
+class SourceLanguage << (C,white) >> #FFFFFF {
+}
+class ExternalProcedure << (C,white) >> #FFFFFF {
+}
+class SourcedEntity << (C,white) >> #FFFFFF {
+}
+class Comment << (C,white) >> #FFFFFF {
+  Boolean isEsope
 }
 class TProgramUnit << (T,lightGrey) >> #FFFFFF {
 }
 class Parameter << (C,white) >> #FFFFFF {
 }
-class PUBlockData << (C,white) >> #FFFFFF {
-}
-class PUModule << (C,white) >> #FFFFFF {
-}
-class Variable << (C,white) >> #FFFFFF {
-}
 class Entity << (C,white) >> #FFFFFF {
 }
-class ExternalProcedure << (C,white) >> #FFFFFF {
+class SourceAnchor << (C,white) >> #FFFFFF {
 }
-class PUMain << (C,white) >> #FFFFFF {
+class SourceTextAnchor << (C,white) >> #FFFFFF {
+}
+class FamixFortranModel << (C,white) >> #FFFFFF {
 }
 
-Entity <|-- PUComment
-ExternalProcedure <|-- PUFunction
+Entity <|-- Program
+TProgramUnit <|.. Program
+SourceLanguage <|-- UnknownSourceLanguage
+ExternalProcedure <|-- Function
+Entity <|-- Invocation
 ExternalProcedure <|-- Subroutine
-Entity <|-- Parameter
-Entity <|-- PUBlockData
-TProgramUnit <|.. PUBlockData
-Entity <|-- PUModule
+Entity <|-- ProgramFile
+TWithProgramUnits <|.. ProgramFile
+Entity <|-- NamedEntity
+Entity <|-- Module
+TProgramUnit <|.. Module
 Entity <|-- Variable
+Entity <|-- BlockData
+TProgramUnit <|.. BlockData
+ExternalProcedure <|-- UnresolvedBehavioral
+SourceAnchor <|-- IndexedFileAnchor
+Entity <|-- SourceLanguage
 Entity <|-- ExternalProcedure
 TProgramUnit <|.. ExternalProcedure
-Entity <|-- PUMain
+Entity <|-- SourcedEntity
+SourcedEntity <|-- Comment
+TWithProgramUnits <|.. TProgramUnit
+Entity <|-- Parameter
+Entity <|-- SourceAnchor
+SourceAnchor <|-- SourceTextAnchor
 
 TProgramUnit " *programUnits" --o "container" TWithProgramUnits
 
